@@ -1,4 +1,4 @@
-var imagePath = '/images/'
+var imagePath = 'https://c-4-d-e.github.io/interactive-infographics/images/'
 
 	var header = {
 			headline: 'Industry 4.0 <br /> Design Principles',
