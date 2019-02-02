@@ -47,7 +47,7 @@
     display:inline-block;
     vertical-align:top;
     width:200px;
-    height:300px;
+    height:280px;
     background-color:#FFF;
     margin: 10px 4px 0 4px;
     overflow:hidden;
@@ -98,9 +98,9 @@
 .textInnerWrapper {
     display:block;
     position:relative;
-    padding: 10px;
+    padding: 1rem;
     background-color: #FFF;
-    width:300px;
+    /* width:300px; */
     margin:0 auto;
 }
 .imageButton{
@@ -151,8 +151,8 @@ margin: auto;
 }
 @media only screen and (min-width: 475px) {
 .interactiveText{
-    font-size: 20px;
-    line-height: 26px;
+    font-size: 16px;
+    line-height: 1.4;
 }
 .textInnerWrapper {
     width:455px;
