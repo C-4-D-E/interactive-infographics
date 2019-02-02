@@ -172,3 +172,18 @@ margin: auto;
     line-height: 40px;
 }
 }
+@media only screen and (max-width:414px) {
+    .cardOuterWrapper {
+        width:30vw;
+    }
+    .circleButton_wrapper {
+        width: 30vw;
+        height: 15vh;
+    }
+    .cardOuterWrapper_off {
+        height: 110px;
+    }
+    .buttonText {
+        font-size: .618rem;
+    }
+    }
