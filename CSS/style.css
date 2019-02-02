@@ -4,7 +4,7 @@
     }
 
 .interactiveText{
-    font-family: 'Georgia', serif;
+    font-family: 'Helvetica', serif;
     font-size: 16px;
     font-weight: 400;
     line-height: 20px;
@@ -18,7 +18,7 @@
     padding:30px 20px 10px 20px;
 }
 .interactiveIntro{
-    font-family: 'Roboto Condensed', arial, sans-serif;
+    font-family: 'Helvetica', arial, sans-serif;
     font-size: 22px;
     font-weight: 400;
     line-height: 28px;
@@ -31,7 +31,7 @@
     max-width: 768px;
     margin: 30px auto 30px auto;
     text-align: center;
-    border:#CACACA 1px solid;
+   /* border:#CACACA 1px solid; */
     padding-bottom: 30px;
     overflow:hidden;
     }
@@ -65,7 +65,7 @@
     overflow: hidden;
     border-radius:10px;
     margin:0 auto;
-    background-color: #fff;
+    background-color: rgba(252, 252, 252, 1);
     box-sizing:border-box;
     border:#CCCCCC 1px solid;
     }
@@ -100,7 +100,7 @@
     position:relative;
     padding: 10px;
     background-color: #FFF;
-    width:280px;
+    width:300px;
     margin:0 auto;
 }
 .imageButton{
