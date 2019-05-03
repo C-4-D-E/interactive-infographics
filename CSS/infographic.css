@@ -84,8 +84,8 @@ html {
     color: #f66867;
   }
 .infographic-heading {
-    font-size: 7vw;
-    letter-spacing: -.2rem;
+    font-size: 4vw;
+    letter-spacing: -.07rem;
     font-family: helvetica;
     padding: 1rem;
     line-height: 1;
@@ -356,84 +356,6 @@ html {
     }
   }
   
-/* draw circle animation */
-.circle__box {
-  width: 25vw;
-  height: 25vw;
-  top: 0;
-  bottom: 0;
-  margin: auto;
-  position: absolute;
-  left: 0;
-  right: 0;
-}
-
-.circle__wrapper {
-width: 12.5vw;
-height: 30vw;
-position: absolute;
-top: 0;
-overflow: hidden;
-}
-
-.circle__wrapper--right {
-right: 0px;
-}
-
-.circle__wrapper--left {
-
-}
-
-.circle__whole {
-width: 25vw;
-height: 25vw;
-border: 10px solid transparent;
-border-radius: 50%;
-position: absolute;
-top: 0;
-transform: rotate(-135deg);
-}
-
-.circle__right {
-border-top: 10px solid orange;
-border-right: 10px solid red;
-right: 0;
-animation: circleRight 3s linear forwards;
-animation-delay: 4s;
-animation-play-state: paused;
-}
-
-.circle__left {
-border-bottom: 10px solid blue;
-border-left: 10px solid green;
-left: 0;
-animation: circleLeft 3s linear forwards;
-animation-delay: 4s;
-animation-play-state: paused;
-}
-
-
-@keyframes circleRight {
-0% {
-  transform: rotate(-135deg);
-}
-50%,
-100% {
-  transform: rotate(45deg);
-}
-}
-
-@keyframes circleLeft {
-0%,
-50% {
-  transform: rotate(-135deg);
-}
-100% {
-  -webkit-transform: rotate(45deg);
-}
-}
-
-
   .first-text {
     position: absolute;
     top: 50%;
