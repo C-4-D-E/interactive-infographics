@@ -521,7 +521,7 @@ html {
   
   .circle-container img:hover {
       filter: grayscale(0);
-      opacity: .5;
+      /*opacity: .5;*/
       width: 11vw;
       height: 11vw;
       transition: 0.2s;
