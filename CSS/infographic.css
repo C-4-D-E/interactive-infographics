@@ -6,9 +6,8 @@ html {
 
 .toggle {
   position: fixed; 
-  right:0;
+  left:2rem;
   top: 0; 
-  padding: 1rem; 
   border-width: 0px;
   font-size:1.8vw;
   letter-spacing: -.01em;
