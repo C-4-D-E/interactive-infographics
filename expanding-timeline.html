@@ -1,0 +1,383 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>C4DE Training Impact</title>
+
+    <style>
+       @font-face {
+    font-family: 'museo500';
+    src: url('fonts/museo500-regular-webfont.woff2') format('woff2'),
+         url('fonts/museo500-regular-webfont.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+
+}
+        body {
+          font-family: 'Helvetica';
+          /*font-weight: 300;*/
+          font-size: 20px;
+          line-height: 1.4;
+          margin: 0;
+        }
+        
+        h1 {
+          font-weight: normal !important;
+          font-size: 2rem;
+        }
+        
+        .tl-bg {
+          display: none;
+        }
+        
+        ul {
+          display: flex;
+          justify-content: space-between;
+          padding: 0;
+        }
+        
+        li {
+          font-size: 24px;
+          list-style: none;
+          text-align: left;
+          opacity: 0.5;
+        }
+        
+        .tl-item:hover .tl-bg {
+          display: block;
+        }
+        
+        .vp-heading {
+            font-family: 'Museo500', Arial;
+            display: block;
+            font-size: 3vw;
+            color: #000054;
+            text-align: center;
+            position: fixed;
+            margin: auto;
+            width: 100%;
+            padding-top: 7%;
+        }
+
+        .tl-item:hover .vp-heading {
+          display: none !important;
+        }
+        
+        
+        #timeline {
+          display: flex;
+          background-color: #FFF;
+          height: 100vh;
+        }
+        @media screen and (max-width: 568px) {
+          #timeline {
+            flex-direction: column;
+          }
+        }
+        #timeline:hover .tl-item {
+          width: 10%;
+        }
+        @media screen and (max-width: 568px) {
+          #timeline:hover .tl-item {
+            width: 100%;
+            min-height: 300px;
+          }
+        }
+        .tl-item {
+          transform: translate3d(0, 0, 0);
+          position: relative;
+          width: 33.3%;
+          min-height: 33.3% !important;
+          color: #fff;
+          overflow: hidden;
+          transition: width 0.5s ease;
+        }
+        @media screen and (max-width: 568px) {
+          .tl-item {
+            width: 100%;
+            min-height: 250px;
+          }
+        }
+        .tl-item:before, .tl-item:after {
+          transform: translate3d(0, 0, 0);
+          content: '';
+          position: absolute;
+          left: 0;
+          top: 0;
+          width: 100%;
+          height: 100%;
+        }
+        .tl-item:after {
+          /* background: rgba(0, 0, 0, 0.6);*/
+          opacity: 0.7;
+          transition: opacity 0.5s ease;
+        }
+        .tl-item:before {
+          background: linear-gradient(to bottom, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, .5) 75%);
+          z-index: 1;
+          opacity: 0;
+          transform: translate3d(0, 0, 0) translateY(50%);
+          transition: opacity 0.5s ease, transform 0.5s ease;
+        }
+        .tl-item:hover {
+          width: 100% !important;
+        }
+        @media screen and (max-width: 568px) {
+          .tl-item:hover {
+            width: 100% !important;
+            min-height: 500px;
+          }
+        }
+        .tl-item:hover:after {
+          opacity: 0;
+        }
+        .tl-item:hover:before {
+          opacity: 1;
+          transform: translate3d(0, 0, 0) translateY(0);
+          transition: opacity 1s ease, transform 1s ease 0.25s;
+        }
+        .tl-item:hover .tl-content {
+          opacity: 1;
+          transform: translateY(0);
+          transition: all 0.75s ease 0.5s;
+        }
+        .tl-item:hover .tl-bg {
+          filter: blur(0px);
+        }
+        .tl-content {
+          transform: translate3d(0, 0, 0) translateY(25px);
+          position: relative;
+          z-index: 1;
+          text-align: center;
+          margin: 0 4em;
+          top: 50%;
+          opacity: 0;
+        }
+        
+        @media screen and (max-width: 568px) {
+          .tl-content {
+          transform: translate3d(0, 0, 0) translateY(25px);
+          position: relative;
+          text-align: left;
+          margin: 0 4em 0 1rem;
+          top: 50% !important;
+          font-size: 14px;
+        }
+        }
+        
+        .tl-content h1 {
+          font-family: Helvetica Neue, Helvetica, Arial, sans-serif;
+          /*text-transform: uppercase;*/
+          color: #eebc9b;
+          font-size: 1.44rem;
+
+          letter-spacing: 0.1em;
+        }
+        .tl-content p {
+          font-family: Helvetica Neue, Helvetica, Arial, sans-serif;
+          letter-spacing: 0.05em;
+        }
+        .tl-year {
+          position: absolute;
+          top: 48%;
+          left: 50%;
+          transform: translateX(-50%) translateY(-50%);
+          z-index: 1;
+        }
+        .tl-year p {
+          font-family: 'Helvetica-Neue', Helvetica, Arial, sans-serif;
+          font-size: 2.083vw;
+          line-height: 1;
+          letter-spacing: 0px;
+          text-align: center;
+          font-weight: normal;
+          color: #000054;
+        }
+        .tl-bg, .tl-bg-1  {
+          transform: translate3d(0, 0, 0);
+          position: absolute;
+          width: 100%;
+          height: 100%;
+          top: 0;
+          left: 0;
+          background-size: cover;
+          background-position: center center;
+          transition: filter 0.5s ease;
+        }
+        
+        .button {
+          background-color: #ebc719;
+          border: none;
+          color: white;
+          padding: 15px 32px;
+          text-align: center;
+          text-decoration: none;
+          display: inline-block;
+          font-size: 16px;
+        }
+        
+        .icon {
+          z-index: 20;
+          width: 9vw;
+        }
+        
+        #timeline:hover .tl-year {
+          display:none;
+        }
+        
+        #timeline:hover .process-tabs {
+          display:block;
+        }
+        
+        .tl-item:hover .process-tabs {
+          color: red;
+        }
+        
+        .process-tabs {
+          display:none;
+          font-family: Helvetica Neue, Helvetica, Arial, sans-serif;
+          color: #000054;
+          font-size: 1.44rem;
+          font-weight: normal !important;
+          z-index: 20;
+          writing-mode: vertical-rl;
+          text-orientation: mixed;
+          width: 100%;
+          position: absolute;
+          top: 1rem;
+          right: 1rem;
+          left: 0;
+          margin: auto;
+          padding: 1rem;
+        }
+        </style>
+
+
+</head>
+<body>
+    
+    <h1 class="vp-heading">How we drive digital capabilities</h1>
+
+<section id="timeline">
+
+    <!--Research-->
+<div class="tl-item">
+<div class="process-tabs">   
+  <h1>Discover</h1>    
+      </div>  
+      <div class="tl-bg" style="background-image: url(https://images.unsplash.com/photo-1491309055486-24ae511c15c7?ixlib=rb-1.2.1&amp)"></div>
+          
+      <div class="tl-year"> <p style="text-align:center;"><svg class="icon" version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+       viewBox="0 0 94.2 91.2" style="enable-background:new 0 0 94.2 91.2;" xml:space="preserve">
+  <style type="text/css">
+      .st0{fill:#000054;}
+  </style>
+  <path class="st0" d="M68.9,65.8l0.5-0.5C75.6,58.1,79,49,79,39.5C79,17.7,61.3,0,39.5,0S0,17.7,0,39.4s17.7,39.5,39.5,39.5
+      c8.9,0,17.3-2.9,24.3-8.4l0.4-0.3l26,21l4-5L68.9,65.8z M39.5,72.5c-18.2,0-33.1-14.8-33.1-33.1c0-18.2,14.8-33.1,33.1-33.1
+      c18.2,0,33.1,14.8,33.1,33.1S57.7,72.5,39.5,72.5z"/>
+  <rect x="18.4" y="37.9" class="st0" width="6.4" height="14.9"/>
+  <rect x="30.1" y="27.8" class="st0" width="6.4" height="24.9"/>
+  <rect x="41.5" y="32.7" class="st0" width="6.4" height="20.1"/>
+  <rect x="53.2" y="43.4" class="st0" width="6.4" height="9.3"/>
+  </svg><p>
+        
+        <p class="f2 heading--sanSerif">RESEARCH</p>
+      </div>
+  
+      <div class="tl-content">
+        <p>During this phase we conduct leading practice research through training needs analysis, i.40 roadmaps, skills capability frameworks, whitepapers and reports. We strive to discover the the future skills that will equip workers and drive the economy.</p>
+      </div>   
+    </div>
+                                                      
+                                        
+    <div class="tl-item">
+  <div class="process-tabs">   
+  <h1>Define</h1></div>
+                        
+      <div class="tl-bg" style="background-image: url(https://i.ibb.co/p3jZgN6/timothy-muza-6-Vj-Pmy-Mj5-KM-unsplash.jpg)">
+      </div>
+      
+      <div class="tl-year">
+  <p style="text-align:center;"><svg class="icon" version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+       viewBox="0 0 20 19.7" style="enable-background:new 0 0 20 19.7;" xml:space="preserve">
+  <style type="text/css">
+      .st0{fill:#000054;}
+  </style>
+  <g>
+      <rect x="18" y="8.1" class="st0" width="1.7" height="1.7"/>
+      <rect x="0.4" y="8.1" class="st0" width="1.7" height="1.7"/>
+      <rect x="15.1" y="2.2" transform="matrix(0.7071 -0.7071 0.7071 0.7071 2.5519 12.1752)" class="st0" width="1.7" height="1.7"/>
+      <rect x="9.1" y="0.3" class="st0" width="1.7" height="1.7"/>
+      <rect x="3.1" y="2.1" transform="matrix(0.7071 -0.7071 0.7071 0.7071 -0.95 3.6874)" class="st0" width="1.7" height="1.7"/>
+      <path class="st0" d="M10,3.7c-3.6,0-6.5,2.9-6.5,6.5c0,2.4,1.3,4.5,3.4,5.7L7,16v2.7h2.3v1h1.5v-1h2.4V16l0.1-0.1
+          c2-1.2,3.4-3.4,3.4-5.7C16.6,6.6,13.6,3.7,10,3.7z M12.1,14.9l-0.5,0.2v2.2H8.4v-2.2l-0.5-0.2c-1.8-0.9-3-2.7-3-4.6
+          c0-2.8,2.3-5.1,5.1-5.1s5.2,2.3,5.2,5.1C15.2,12.2,13.9,14.1,12.1,14.9z"/>
+  </g>
+  </svg></p>
+  <p class="f2 heading--sanSerif">INNOVATION</p>          
+  </div>
+                         
+      <div class="tl-content">
+        <p>During this phase we define opportunities and the right problems to solve through co-design workshops with businesses and schools. We’re able to identify your learning needs, business strategy, company culture, and context. We use those insights to design and develop curriculum for your team — and your team alone.
+  </p>        
+      </div>
+    </div>
+  
+    <div class="tl-item">
+  <div class="process-tabs">   
+  <h1>Deliver</h1>    
+      </div>
+      
+      <div class="tl-bg" style="background-image: url(https://live.staticflickr.com/644/22400836878_9ef1e11869_h.jpg)"></div>
+      
+      <div class="tl-year">
+        <p style="text-align:center;"><svg class="icon" version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+       viewBox="0 0 20 19.7" style="enable-background:new 0 0 20 19.7;" xml:space="preserve">
+  <style type="text/css">
+      .st0{fill:#000054;}
+  </style>
+  <path class="st0" d="M4.2,10.9H1c-0.5,0-0.9,0.4-0.9,1v6.9c0,0.5,0.4,1,0.9,1h3.3c0.5,0,0.9-0.4,0.9-1v-6.9
+      C5.2,11.3,4.7,10.9,4.2,10.9z M4.3,18.5c0,0.1-0.1,0.2-0.2,0.2h-3c-0.1,0-0.2-0.1-0.2-0.2v-6.3c0-0.1,0.1-0.2,0.2-0.2h3
+      c0.1,0,0.2,0.1,0.2,0.2V18.5z"/>
+  <path class="st0" d="M4.8,3.1L4.2,2.3c2.8-2.9,8.2-3.3,11.6,0l-0.6,0.8C11.7,0.4,8.3,0.4,4.8,3.1z"/>
+  <path class="st0" d="M14.1,4.5l-0.7,0.9c-1.9-2.1-5.1-2-6.9,0L5.9,4.5C8,2.2,11.9,2.1,14.1,4.5z"/>
+  <path class="st0" d="M8.2,7.5L7.6,6.7c1-1.6,3.5-1.7,4.8,0l-0.6,0.8c-0.5-0.6-1.1-0.9-1.8-0.9C9.3,6.6,8.7,6.9,8.2,7.5z"/>
+  <g>
+      <rect x="0" y="8.8" class="st0" width="20" height="0.8"/>
+  </g>
+  <g>
+      <rect x="1.7" y="17.5" class="st0" width="1.9" height="0.8"/>
+  </g>
+  <path class="st0" d="M14.4,15.8v-0.9l-1.6-0.1c-0.1-0.4-0.2-0.7-0.4-1.1l1.1-1.2l-0.6-0.6l-1.2,1.1c-0.3-0.2-0.7-0.4-1.1-0.4
+      l-0.1-1.6H9.5l-0.1,1.6c-0.4,0.1-0.7,0.2-1.1,0.4l-1.2-1.1l-0.6,0.6l1.1,1.2c-0.2,0.3-0.4,0.7-0.4,1.1l-1.6,0.1v0.9l1.6,0.1
+      c0.1,0.4,0.2,0.7,0.4,1.1l-1.1,1.2l0.6,0.6l1.2-1.1c0.3,0.2,0.7,0.4,1.1,0.4l0.1,1.6h0.9l0.1-1.6c0.4-0.1,0.7-0.2,1.1-0.4l1.2,1.1
+      l0.6-0.6l-1.1-1.2c0.2-0.3,0.4-0.7,0.4-1.1L14.4,15.8z M11.9,15.3c0,1-0.8,1.9-1.9,1.9s-1.9-0.8-1.9-1.9S9,13.4,10,13.4
+      S11.9,14.3,11.9,15.3z"/>
+  <g>
+      <rect x="15.3" y="14.3" class="st0" width="1.1" height="5.4"/>
+  </g>
+  <g>
+      <rect x="17.1" y="12.6" class="st0" width="1.1" height="7.1"/>
+  </g>
+  <g>
+      <rect x="18.9" y="10.9" class="st0" width="1.1" height="8.8"/>
+  </g>
+  </svg></p>
+        
+        <p class="f2 heading--sanSerif">IMPACT</p>
+      </div>
+  
+      <div class="tl-content">
+        <p>Each learning program is curated by our Learning Experience Architects, who collaborate with experienced industry subject matter experts, schools to ensure lessons are relevant to today’s benchmarks.
+  
+  Our holistic educational delivery blends interactive knowledge checks and challenges, which measure learning retention and keeps users engaged.</p>
+              
+      </div>
+    </div>
+  
+  </section>
+
+</body>
+</html>
