@@ -39,4 +39,5 @@ Having trouble with Pages? Check out our [documentation](https://help.github.com
 ### Assets
 
 [Industry 4.0 Design Principles](https://c-4-d-e.github.io/interactive-infographics/accordian-1.html)<br>
-[Infographic Animation](https://c-4-d-e.github.io/interactive-infographics/infographic-animation.html)
+[Infographic Animation](https://c-4-d-e.github.io/interactive-infographics/infographic-animation.html)>br>
+[Expanding Timeline](https://c-4-d-e.github.io/interactive-infographics/expanding-timeline.html)
