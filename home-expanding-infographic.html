@@ -1,0 +1,352 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>C4DE Training Impact</title>
+
+    <style>
+       @font-face {
+    font-family: 'museo500';
+    src: url('fonts/museo500-regular-webfont.woff2') format('woff2'),
+         url('fonts/museo500-regular-webfont.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+
+}
+        body {
+          font-family: 'Helvetica';
+          /*font-weight: 300;*/
+          font-size: 20px;
+          line-height: 1.4;
+          margin: 0;
+        }
+        
+        h1 {
+          font-weight: normal !important;
+          font-size: 2rem;
+        }
+        
+        .tl-bg {
+          display: none;
+        }
+        
+        ul {
+          display: flex;
+          justify-content: space-between;
+          padding: 0;
+        }
+        
+        li {
+          font-size: 24px;
+          list-style: none;
+          text-align: left;
+          opacity: 0.5;
+        }
+        
+        .tl-item:hover .tl-bg {
+          display: block;
+        }
+        
+        .vp-heading {
+            font-family: 'Museo500', Arial;
+            display: block;
+            font-size: 30px;
+            color: #000054;
+            text-align: center;
+            position: fixed;
+            margin: auto;
+            width: 100%;
+            padding-top: 7%;
+        }
+        
+         @media screen and (max-width: 414px) {
+         .vp-heading {
+            font-size: 24px;
+            }
+          }
+
+        .tl-item:hover .vp-heading {
+          display: none !important;
+        }
+        
+        
+        #timeline {
+          display: flex;
+          background-color: #FFF;
+          height: 70vh;
+        }
+        @media screen and (max-width: 568px) {
+          #timeline {
+            flex-direction: column;
+          }
+        }
+        #timeline:hover .tl-item {
+          width: 10%;
+        }
+        @media screen and (max-width: 568px) {
+          #timeline:hover .tl-item {
+            width: 100%;
+            min-height: 300px;
+          }
+        }
+        .tl-item {
+          transform: translate3d(0, 0, 0);
+          position: relative;
+          width: 33.3%;
+          min-height: 33.3% !important;
+          color: #fff;
+          overflow: hidden;
+          transition: width 0.5s ease;
+        }
+        @media screen and (max-width: 568px) {
+          .tl-item {
+            width: 100%;
+            min-height: 250px;
+          }
+        }
+        .tl-item:before, .tl-item:after {
+          transform: translate3d(0, 0, 0);
+          content: '';
+          position: absolute;
+          left: 0;
+          top: 0;
+          width: 100%;
+          height: 100%;
+        }
+        .tl-item:after {
+          /* background: rgba(0, 0, 0, 0.6);*/
+          opacity: 0.7;
+          transition: opacity 0.5s ease;
+        }
+        .tl-item:before {
+          background: linear-gradient(to bottom, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, .5) 75%);
+          z-index: 1;
+          opacity: 0;
+          transform: translate3d(0, 0, 0) translateY(50%);
+          transition: opacity 0.5s ease, transform 0.5s ease;
+        }
+        .tl-item:hover {
+          width: 100% !important;
+        }
+        @media screen and (max-width: 568px) {
+          .tl-item:hover {
+            width: 100% !important;
+            min-height: 500px;
+          }
+        }        
+        .tl-item:hover:after {
+          opacity: 0;
+        }
+        .tl-item:hover:before {
+          opacity: 1;
+          transform: translate3d(0, 0, 0) translateY(0);
+          transition: opacity 1s ease, transform 1s ease 0.25s;
+        }
+        .tl-item:hover .tl-content {
+          opacity: 1;
+          transform: translateY(0);
+          transition: all 0.75s ease 0.5s;
+        }
+        .tl-item:hover .tl-bg {
+          filter: blur(0px);
+        }
+        .tl-content {
+          transform: translate3d(0, 0, 0) translateY(25px);
+          position: relative;
+          z-index: 1;
+          text-align: center;
+          margin: 0 4em;
+          top: 50%;
+          opacity: 0;
+        }
+        
+        @media screen and (max-width: 568px) {
+          .tl-content {
+          transform: translate3d(0, 0, 0) translateY(25px);
+          position: relative;
+          text-align: left;
+          margin: 0 4em 0 1rem;
+          top: 50% !important;
+          font-size: 14px;
+        }
+        }
+        
+        .tl-content h1 {
+          font-family: Helvetica Neue, Helvetica, Arial, sans-serif;
+          /*text-transform: uppercase;*/
+          color: #eebc9b;
+          font-size: 1.44rem;
+
+          letter-spacing: 0.1em;
+        }
+        .tl-content p {
+          font-family: Helvetica Neue, Helvetica, Arial, sans-serif;
+          letter-spacing: 0.05em;
+        }
+        .tl-year {
+          position: absolute;
+          top: 48%;
+          left: 50%;
+          transform: translateX(-50%) translateY(-50%);
+          z-index: 1;
+        }
+        .tl-year p {
+          font-family: 'Helvetica-Neue', Helvetica, Arial, sans-serif;
+          font-size: 2.083vw;
+          line-height: 1;
+          letter-spacing: 0px;
+          text-align: center;
+          font-weight: normal;
+          color: #000054;
+        }
+        .tl-bg, .tl-bg-1  {
+          transform: translate3d(0, 0, 0);
+          position: absolute;
+          width: 100%;
+          height: 100%;
+          top: 0;
+          left: 0;
+          background-size: cover;
+          background-position: center center;
+          transition: filter 0.5s ease;
+        }
+        
+        .button {
+          background-color: #ebc719;
+          border: none;
+          color: white;
+          padding: 15px 32px;
+          text-align: center;
+          text-decoration: none;
+          display: inline-block;
+          font-size: 16px;
+        }
+        
+        .icon {
+          z-index: 20;
+          width: 9vw;
+        }
+        
+        #timeline:hover .tl-year {
+          display:none;
+        }
+        
+        #timeline:hover .process-tabs {
+          display:block;
+        }
+        
+        .tl-item:hover .process-tabs {
+          color: red;
+        }
+        
+        .process-tabs {
+          display:none;
+          font-family: Helvetica Neue, Helvetica, Arial, sans-serif;
+          color: #000054;
+          font-size: 1.44rem;
+          font-weight: normal !important;
+          z-index: 20;
+          writing-mode: vertical-rl;
+          text-orientation: mixed;
+          width: 100%;
+          position: absolute;
+          top: 1rem;
+          right: 1rem;
+          left: 0;
+          margin: auto;
+          padding: 1rem;
+        }
+        
+         @media screen and (max-width: 414px) {
+          .icon {
+          width: 20vw;
+          padding-top: 20%;
+          }
+        .tl-year p {
+            font-size: 16px;
+            }
+         .tl-content {
+          top: 25% !important;   
+             }     
+        }
+         @media screen and (max-width: 812px) {
+           .tl-content {
+          font-size: 14px;
+          text-align: left;
+             }
+        }
+             
+        </style>
+
+
+</head>
+<body>
+    
+
+<section id="timeline">
+
+ <!--Courses-->
+<div class="tl-item">
+<div class="process-tabs">   
+  <h1>Build capabilities</h1>    
+      </div>  
+      <div class="tl-bg" style="background-image: url(https://raw.githubusercontent.com/C-4-D-E/interactive-infographics/master/images/CNC-machine.jpg)"></div>
+          
+      <div class="tl-year"> <p style="text-align:center;">
+        
+       <img src="https://raw.githubusercontent.com/C-4-D-E/interactive-infographics/master/c4de-courses.png">
+  
+  <p>
+        
+        <p class="f2 heading--sanSerif">Courses</p>
+      </div>
+  
+      <div class="tl-content">
+        <p>During this phase we conduct leading practice research through training needs analysis, i.40 roadmaps, skills capability frameworks, whitepapers and reports. We strive to discover the the future skills that will equip workers and drive the economy.</p>
+      </div>   
+    </div>
+                                                      
+ <!--Workshops-->                               
+    <div class="tl-item">
+  <div class="process-tabs">   
+  <h1>Design solutions</h1></div>
+                        
+      <div class="tl-bg" style="background-image: url(https://raw.githubusercontent.com/C-4-D-E/interactive-infographics/master/images/co-design-workshop.jpg)">
+      </div>
+      
+      <div class="tl-year">
+  <p style="text-align:center;"><img src="https://raw.githubusercontent.com/C-4-D-E/interactive-infographics/master/c4de-Workshops-icon.png"></p>
+  <p class="f2 heading--sanSerif">Workshops</p>          
+  </div>
+                         
+      <div class="tl-content">
+        <p>During this phase we define opportunities and the right problems to solve through co-design workshops with businesses and schools. We’re able to identify your learning needs, business strategy, company culture, and context. We use those insights to design and develop curriculum for your team — and your team alone.
+  </p>        
+      </div>
+    </div>
+ <!--Analysis-->    
+    <div class="tl-item">
+  <div class="process-tabs">   
+  <h1>Skills gaps</h1>    
+      </div>
+      
+      <div class="tl-bg" style="background-image: url(https://live.staticflickr.com/644/22400836878_9ef1e11869_h.jpg)"></div>
+      
+      <div class="tl-year">
+        <p style="text-align:center;"><img src="https://raw.githubusercontent.com/C-4-D-E/interactive-infographics/master/c4de-Research-icon.png"></p>
+        
+        <p class="f2 heading--sanSerif">Analysis</p>
+      </div>
+  
+      <div class="tl-content">
+        <p>We conduct leading practice research through training needs analysis, i.40 roadmaps, skills capability frameworks, whitepapers and reports. We strive to discover the the future skills that will equip workers and drive the economy.</p>
+              
+      </div>
+    </div>
+  
+  </section>
+
+</body>
+</html>
